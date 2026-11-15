@@ -45,7 +45,7 @@ predictions/                prediction CSVs (created by the scripts, not in git)
 
 ## Data
 
-The dataset is not included. Download the HASTIKA files from the organizers' repository and put them in `data/`:
+The dataset is not included and is subject to the organizers' terms. Download the HASTIKA files from the organizers' repository and put them in `data/`:
 
 - `binary_train.csv` (columns: `id`, `Comment`, `Label`)
 - `hastika_binary_validation.csv` (with gold labels)
@@ -128,8 +128,17 @@ results above.
 
 ## Models on the Hugging Face Hub
 
-[Add the links to the uploaded model repositories here.]
+| Model | Link |
+|---|---|
+| MuRIL fine-tuned for Task A | https://huggingface.co/Ganesh-Nadkarni/hastika-task-a-muril |
+| XLM-RoBERTa-base fine-tuned for Task A | https://huggingface.co/Ganesh-Nadkarni/hastika-task-a-xlmr-base |
 
-## License
+```python
+from transformers import pipeline
 
-[Choose a license for the code.] The HASTIKA dataset is subject to its own terms.
+clf = pipeline("text-classification", model="Ganesh-Nadkarni/hastika-task-a-muril")
+print(clf("your Kanglish comment here"))
+```
+
+These are single encoders. The scores reported above are for the blend with the TF-IDF SVM, which is not on the Hub,
+so each encoder alone is weaker.
