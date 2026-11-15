@@ -1,0 +1,97 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ===== Virtual environments =====
+venv/
+.venv/
+env/
+
+# ===== Secrets: never commit tokens or keys =====
+.env
+*.env
+.huggingface/
+hf_token*
+*token*.txt
+
+# ===== Dataset: the task terms say not to redistribute it =====
+data/*
+!data/.gitkeep
+internal_val_texts.json
+internal_val_cache.npz
+
+# ===== Trained models and checkpoints (too large for GitHub; upload to Hugging Face instead) =====
+outputs/
+task_a/
+task_b/
+checkpoint-*/
+runs/
+wandb/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.npy
+*.joblib
+*.pkl
+training_args.bin
+
+# ===== Prediction files and result dumps =====
+predictions/
+*_predictions*.csv
+FINAL_*.csv
+
+# ===== Colab notebooks (not needed in the repo) =====
+colab/
+
+# ===== src/: track only the scripts the Task A pipeline needs =====
+# Run: python check_required.py src train multi_ensemble score_against_gold
+# Add a "!src/<name>.py" line for every file it lists under NEEDED.
+src/*.py
+!src/utils.py
+!src/train.py
+!src/multi_ensemble.py
+!src/score_against_gold.py
+
+# ===== trials/ (approaches tried) is tracked on purpose: do NOT ignore it =====
+# ===== One-off helper scripts in the project root (not part of the repo) =====
+make_trials.py
+check_required.py
+check_extra_rows.py
+
+# ===== Backups and archives =====
+backup_2/
+BACKUP_wo_XLM-R/
+best_4_way_muril_svm_xlmr/
+submission_1_backup/
+*.zip
+*.tar
+*.tar.gz
+*.7z
+
+# ===== Editors and OS =====
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Logs =====
+*.log
+nohup.out
+
+# ===== LaTeX build files (if the paper lives in this repo) =====
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+upload.py
